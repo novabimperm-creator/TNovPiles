@@ -36,12 +36,21 @@ namespace TNovPiles
         {
 
         }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            string commandText = @"https://portal.talan.group/knowledge/proektirovanie/svai_xmqe/";
+            var proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = commandText;
+            proc.StartInfo.UseShellExecute = true;
+            proc.Start();
+        }
         /*
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-   <TextBlock Name="text2" Margin="5" Text="Настройка:" TextWrapping="Wrap" />
-   <Slider Minimum="500" Maximum="2000" Value="{Binding tolerance}" TickPlacement="None" TickFrequency="5" IsSnapToTickEnabled="True" Name="slValue" Width="124" Margin="5"
-           ValueChanged="Slider_ValueChanged"/>
-   <TextBox Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" Width="50" Margin="5" />
+<TextBlock Name="text2" Margin="5" Text="Настройка:" TextWrapping="Wrap" />
+<Slider Minimum="500" Maximum="2000" Value="{Binding tolerance}" TickPlacement="None" TickFrequency="5" IsSnapToTickEnabled="True" Name="slValue" Width="124" Margin="5"
+  ValueChanged="Slider_ValueChanged"/>
+<TextBox Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" Width="50" Margin="5" />
 </StackPanel>
 */
 

@@ -26,5 +26,20 @@ namespace TNovPiles
         {
 
         }
+
+        private void escButton_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            this.Close(); // закрытие окна
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            string commandText = @"https://portal.talan.group/knowledge/proektirovanie/svai_xmqe/";
+            var proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = commandText;
+            proc.StartInfo.UseShellExecute = true;
+            proc.Start();
+        }
     }
 }
