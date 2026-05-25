@@ -104,6 +104,7 @@ namespace TNovPiles
                             select pl;
             #endregion
 
+            bool unhandledError = false;
             #region Основной код
             using (Transaction transaction = new Transaction(doc))
             {
@@ -128,9 +129,16 @@ namespace TNovPiles
                 catch (Exception ex)
                 {
                     Logger.Log("Ошибка: " + ex.Message, 4);
+                    new InfoWindow280("Ошибка: " + ex.Message).ShowDialog();
+                    unhandledError = true;
                 }
             }
             #endregion
+            if (unhandledError)
+            {
+                Logger.Log("Завершение работы с ошибками.", 4);
+                return Result.Succeeded;
+            }
             Logger.Log("Завершение работы.",5);
             return Result.Succeeded;
         }
