@@ -215,7 +215,11 @@ namespace TNovPiles
                         sort = y * (-1000) - x;
                         break;
                     case 5:
+#if R2022
                         sort = pid.IntegerValue;
+#else
+                        sort = pid.Value;
+#endif
                         break;
                 }
                 Pile pl = new Pile();
@@ -252,7 +256,7 @@ namespace TNovPiles
                               select pl;
                 foreach (var p in psorted) { pilestowork.Add(p); } //заполняем список в работу
             }
-            #endregion
+#endregion
 
             int allcount =pilestowork.Count;
 

@@ -146,15 +146,20 @@ namespace TNovPiles
                     foreach (var pl in pilesoftypesorted)
                     {
                         Element elem = doc.GetElement(pl.elemid);
-                        try
-                        {
+#if R2022
+                    long idint =  pl.elemid.IntegerValue;
+#else
+                            long idint = pl.elemid.Value;
+#endif
+                            try
+                            {
                             elem.get_Parameter(pileGroup1ParamGuid)?.Set(parameterNum1val);
-                            Logger.Log("   Элемент "+ pl.elemid.IntegerValue.ToString() + 
+                            Logger.Log("   Элемент "+ idint.ToString() + 
                                 " параметр N_Свая.Группа1 заполнен: "+ parameterNum1val, 2);
                         }
                         catch (Exception ex) 
                         {
-                            Logger.Log("Элемент " + pl.elemid.IntegerValue.ToString() +" ошибка: " + ex.Message, 4);
+                            Logger.Log("Элемент " + idint.ToString() +" ошибка: " + ex.Message, 4);
                         }
                         
                     }
@@ -211,15 +216,20 @@ namespace TNovPiles
                         foreach (var pl in pilesatleveloftypesorted)
                         {
                             Element elem = doc.GetElement(pl.elemid);
-                            try
-                            {
+#if R2022
+                    long idint =  pl.elemid.IntegerValue;
+#else
+                                long idint = pl.elemid.Value;
+#endif
+                                try
+                                {
                                 elem.get_Parameter(pileGroup2ParamGuid)?.Set(parameterNum2val);
-                                Logger.Log("      Элемент " + pl.elemid.IntegerValue.ToString() +
+                                Logger.Log("      Элемент " + idint.ToString() +
                                     " параметр N_Свая.Группа2 заполнен: " + parameterNum2val, 2);
                             }
                             catch (Exception ex)
                             {
-                                Logger.Log("Элемент " + pl.elemid.IntegerValue.ToString() + " ошибка: " + ex.Message, 4);
+                                Logger.Log("Элемент " + idint.ToString() + " ошибка: " + ex.Message, 4);
                             }
                         }
                     }
