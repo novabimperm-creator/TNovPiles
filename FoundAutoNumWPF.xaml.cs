@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using TNovCommon;
 
 namespace TNovPiles
 {
@@ -13,46 +15,40 @@ namespace TNovPiles
             InitializeComponent();
             textBox1.Focus();
             DataContext = viewModel;
-            
+
             this.SizeToContent = SizeToContent.Height;
-            
         }
+
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             ((Slider)sender).SelectionEnd = e.NewValue;
         }
+
         private void acceptButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
-            this.Close(); // закрытие окна
+            this.Close();
         }
+
         private void escButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
-            this.Close(); // закрытие окна
+            this.Close();
         }
 
-        private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            string commandText = @"https://portal.talan.group/knowledge/proektirovanie/svai_xmqe/";
+            string commandText = HelpLinks.GetHelpLink("Сваи");
             var proc = new System.Diagnostics.Process();
             proc.StartInfo.FileName = commandText;
             proc.StartInfo.UseShellExecute = true;
             proc.Start();
         }
-        /*
-<StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-<TextBlock Name="text2" Margin="5" Text="Настройка:" TextWrapping="Wrap" />
-<Slider Minimum="500" Maximum="2000" Value="{Binding tolerance}" TickPlacement="None" TickFrequency="5" IsSnapToTickEnabled="True" Name="slValue" Width="124" Margin="5"
-  ValueChanged="Slider_ValueChanged"/>
-<TextBox Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" Width="50" Margin="5" />
-</StackPanel>
-*/
-
     }
 }

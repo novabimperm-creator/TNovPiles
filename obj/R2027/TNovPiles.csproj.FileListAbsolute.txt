@@ -25,3 +25,4 @@ Z:\DEV\_build-test\2027\TNovPiles.deps.json
 Z:\DEV\_build-test\2027\TNovPiles.dll
 Z:\DEV\_build-test\2027\TNovPiles.pdb
 Z:\DEV\_build-test\2027\System.Resources.Extensions.dll
+\\fs-nova\Distr\0.For Admin\_TNov\build\2027\System.Resources.Extensions.dll
